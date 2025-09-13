@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+         <script src="https://kit.fontawesome.com/cbcc2cb107.js" crossorigin="anonymous"></script> 
+    <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+      <div class="container">
+        <h1>Notes</h1>
+        <button class="btn">Create</button>
+      <div class="notes-container">
+   <!-- <p contenteditable="true" class="input-box">
+    <i class="fa-solid fa-trash"></i>
+    </p>-->
+        </div>
+      </div>  
+    <script>
+  const notesContainer = document.querySelector(".notes-container");
+  const createBtn = document.querySelector(".btn");
+  
+   
+   function showNotes(){
+ notesContainer.innerHTML = localStorage.getItem("notes")|| "";
+   }
+     
+  
+  createBtn.addEventListener("click", () => {
+    let inputBox = document.createElement("div"); 
+    let textArea = document.createElement("p");
+    let icon = document.createElement("i");
+    inputBox.className="input-box";
+  
+  inputBox.setAttribute("contenteditable", "true");
+    //textArea.setAttribute("contenteditable", "true");//
+    
+    icon.className = "fa-solid fa-trash";
+    icon.setAttribute("contenteditable","false");
+    inputBox.appendChild(textArea);
+    inputBox.appendChild(icon);
+    
+notesContainer.appendChild(inputBox);
+  
+  });
+  
+notesContainer.addEventListener("click", function(e){
+    if(e.target.tagName==="I"){
+    e.target.parentElement.remove();
+    
+    }
+    else if(e.target.tagName==="p"){
+       notes = document.querySelectorAll(".input-box");
+    notes.forEach(nt => {
+        nt.onkeyup = function(){
+            
+        }
+    })
+       
+    }
+})
+     
+    </script>
+    </body>
+</html>
